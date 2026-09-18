@@ -1,14 +1,19 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
+from pathlib import Path
 
 st.set_page_config(
     page_title="Quezon Agri-Price Radar", page_icon="🌾", layout="wide"
 )
 
+# Locate CSV in the same folder as app2.py
+DATA_PATH = Path(__file__).parent / "quezon_crop_price_surges.csv"
+df = pd.read_csv(DATA_PATH)
+
 # Load data
-df = pd.read_csv("quezon_crop_price_surges.csv")
-df["Date"] = pd.to_datetime(df["Date"])
+# df = pd.read_csv("quezon_crop_price_surges.csv")
+# df["Date"] = pd.to_datetime(df["Date"])
 
 st.title("🌾 Quezon Agri-Commodity Price Shock & Anomaly Radar")
 st.caption(
